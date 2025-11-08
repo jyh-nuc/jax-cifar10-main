@@ -1,6 +1,6 @@
 import jax
 import jax.numpy as jnp
-from model import ImprovedCNN
+from model import OptimizedCNN
 from data import generate_synthetic_data, create_data_loader, evaluate
 from train import train
 
@@ -30,19 +30,19 @@ def main():
         
     print(f"训练集大小: {train_size}, 验证集大小: {val_size}")
     
-    print("开始训练 (50轮)...")
+    print("开始训练 (30轮)...")
     trained_state = train(
-        model=ImprovedCNN(num_classes=10),
+        model=OptimizedCNN(num_classes=10),
         train_data=train_data,
         val_data=val_data,
-        batch_size=64,
-        epochs=50,
+        batch_size=32,
+        epochs=30,
         print_interval=5
     )
     
     print("开始测试...")
     test_data = generate_synthetic_data(train=False)
-    test_loader = create_data_loader(test_data, batch_size=64)
+    test_loader = create_data_loader(test_data, batch_size=32)
     accuracy = evaluate(trained_state, test_loader)
     print(f"最终测试准确率: {accuracy:.4f}")
 
