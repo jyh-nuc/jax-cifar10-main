@@ -30,13 +30,13 @@ def main():
         
     print(f"训练集大小: {train_size}, 验证集大小: {val_size}")
     
-    print("开始训练 (30轮)...")
+    print("开始训练 (50轮)...")
     trained_state = train(
         model=OptimizedCNN(num_classes=10),
         train_data=train_data,
         val_data=val_data,
         batch_size=32,
-        epochs=30,
+        epochs=50,
         print_interval=5
     )
     
